@@ -35,6 +35,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/no-danger': 'off',
+    'no-plusplus': 'off',
   },
   settings: {
     'import/parsers': {
