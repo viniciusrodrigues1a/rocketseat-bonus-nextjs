@@ -7,9 +7,10 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'airbnb',
+    'prettier',
+    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -30,12 +31,20 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'error',
     'react/jsx-props-no-spreading': 'off',
+    'arrow-body-style': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/no-danger': 'off',
   },
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
     'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.ts', '.tsx'],
+      },
       // use <root>/tsconfig.json
       typescript: {
         // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
@@ -56,10 +65,7 @@ module.exports = {
 
       // use an array
       typescript: {
-        project: [
-          'packages/module-a/tsconfig.json',
-          'packages/module-b/tsconfig.json',
-        ],
+        project: ['packages/module-a/tsconfig.json', 'packages/module-b/tsconfig.json'],
       },
 
       // use an array of glob patterns
