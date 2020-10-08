@@ -13,6 +13,7 @@
     "@emotion/styled": "^10.0.27",
     "emotion-theming": "^10.0.27",
     "next": "9.5.3",
+    "polished": "^4.0.1",
     "prettier": "^2.1.2",
     "prismic-dom": "^2.2.4",
     "prismic-javascript": "^3.0.2",
