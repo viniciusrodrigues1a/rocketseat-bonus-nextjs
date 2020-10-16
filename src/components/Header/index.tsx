@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <Box width="100%" height="4rem" backgroundColor={darken(0.3, '#121214')} marginBottom="4rem">
-      <Flex justify="right" align="center" height="100%" marginRight="6rem">
+      <Flex justify="flex-end" align="center" height="100%" marginRight="6rem">
         <Stack isInline spacing={8} shouldWrapChildren>
           <HeaderLink href="/" active={doesRouteMatch('/')}>
             Products

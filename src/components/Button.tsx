@@ -1,11 +1,6 @@
-import { ReactNode } from 'react';
-import { Button as ChakraButton } from '@chakra-ui/core';
+import { Button as ChakraButton, ButtonProps } from '@chakra-ui/core';
 
-interface ButtonProps {
-  children?: ReactNode;
-}
-
-export default function Button({ children = null }: ButtonProps) {
+export default function Button({ children, ...rest }: ButtonProps) {
   return (
     <ChakraButton
       as="a"
@@ -22,6 +17,7 @@ export default function Button({ children = null }: ButtonProps) {
         color: '#493fa6',
         borderColor: '#493fa6',
       }}
+      {...rest}
     >
       {children}
     </ChakraButton>
@@ -30,4 +26,5 @@ export default function Button({ children = null }: ButtonProps) {
 
 Button.defaultProps = {
   children: null,
+  type: 'button',
 };
