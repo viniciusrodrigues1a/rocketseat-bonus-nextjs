@@ -6,7 +6,21 @@ import Prismic from 'prismic-javascript';
 import PrismicDOM from 'prismic-dom';
 import { client } from '@/lib/prismic';
 import { Document } from 'prismic-javascript/types/documents';
-import { Box, Flex, IconButton, InputGroup, InputRightElement, Input } from '@chakra-ui/core';
+import { lighten  } from 'polished'
+import {
+  PseudoBox,
+  Box,
+  Flex,
+  IconButton,
+  InputGroup,
+  InputRightElement,
+  Input,
+  Stack,
+  List,
+  ListItem,
+  Image,
+  Text,
+} from '@chakra-ui/core';
 
 interface SearchProps {
   searchResults: Document[];
@@ -47,39 +61,56 @@ export default function Search({ searchResults }: SearchProps) {
                   color: 'gray.100',
                 }}
               />
-              <InputRightElement
-                children={
-                  <IconButton
-                    type="submit"
-                    aria-label="Search for products"
-                    icon="search"
-                    variant="ghost"
-                    outline="none"
-                    color={searchLength >= 3 ? 'purple.500' : 'white'}
-                    _hover={{}}
-                    _active={{}}
-                    _focus={{}}
-                  />
-                }
-              />
+              <InputRightElement>
+                <IconButton
+                  type="submit"
+                  aria-label="Search for products"
+                  icon="search"
+                  variant="ghost"
+                  outline="none"
+                  color={searchLength >= 3 ? 'purple.500' : 'white'}
+                  _hover={{}}
+                  _active={{}}
+                  _focus={{}}
+                />
+              </InputRightElement>
             </InputGroup>
           </Flex>
         </form>
       </Flex>
 
-      <Flex justify="center" align="center">
-        <ul>
-          {searchResults.map((product) => {
-            return (
-              <li key={product.id}>
-                <Link href={`/catalog/products/${product.uid}`}>
-                  <a>{PrismicDOM.RichText.asText(product.data.title)}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </Flex>
+      <List styleType="none" width="40%" marginX="auto" marginTop="3rem">
+        {searchResults.map((product) => {
+          return (
+            <ListItem key={product.id} marginY="1.5rem">
+              <Link href={`/catalog/products/${product.uid}`}>
+                <a>
+                  <PseudoBox
+                    as="div"
+                    background="#080809"
+                    padding="1rem"
+                    borderRadius="15px"
+                    _hover={{ background: lighten(0.1, '#080809') }}
+                  >
+                    <Stack isInline align="center">
+                      <Image
+                        width="64px"
+                        height="64px"
+                        src={product.data.thumbnail.url}
+                        borderRadius="5px"
+                        borderWidth="1px"
+                        borderStyle="solid"
+                        borderColor="black"
+                      />
+                      <Text as="span">{PrismicDOM.RichText.asText(product.data.title)}</Text>
+                    </Stack>
+                  </PseudoBox>
+                </a>
+              </Link>
+            </ListItem>
+          );
+        })}
+      </List>
     </Box>
   );
 }
