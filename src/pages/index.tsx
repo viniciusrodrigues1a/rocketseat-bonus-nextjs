@@ -20,7 +20,7 @@ export default function Home({ products }: HomeProps) {
       <SEO title="DevCommerce, your best e-commerce!" image="boost.png" shouldExcludeTitleSuffix />
 
       <section>
-        <Grid templateColumns="repeat(5, 1fr)" marginX="6rem" gap="1rem">
+        <Grid templateColumns="repeat(auto-fill, minmax(210px, 1fr))" marginX="6rem" gap="1rem">
           {products.map((product) => {
             return (
               <Box width="100%" marginX="auto" marginBottom="3rem" key={product.id}>
